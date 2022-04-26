@@ -45,8 +45,11 @@ def iknn(path: Path = PathArgument, item_col: str = "article_id", user_col: str 
     print("Parsing data")
     interactions = util.parse_interactions(path, item_col=item_col, user_col=user_col)
 
+    user_ids, item_ids = zip(*interactions)
+    unique_item_ids = list(set(item_ids))
+
     print("fitting model")
-    alg.train(interactions)
+    alg.train(interactions, unique_item_ids=unique_item_ids)
 
     amt_users = 5
     print(f"fetching history for {amt_users} users")
