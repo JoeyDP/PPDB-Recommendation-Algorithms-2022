@@ -67,7 +67,7 @@ class Algorithm:
         self.fit(X)
         return self
 
-    def recommend(self, history: List, top_k: int, retarget=False) -> List:
+    def recommend(self, history: List, top_k: int, retarget=True) -> List:
         """ Compute recommendations based on a list of historical item ids. """
         return self.recommend_all([history], top_k=top_k, retarget=retarget)[0]
 
